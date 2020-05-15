@@ -112,6 +112,8 @@ The public API headers are grouped by topics:
   [VXLAN]              (@ref rte_vxlan.h)
 
 - **QoS**:
+  [AQM]                (@ref rte_aqm.h),
+  [AQM algorithm]      (@ref rte_aqm_algorithm.h),
   [metering]           (@ref rte_meter.h),
   [scheduler]          (@ref rte_sched.h),
   [RED congestion]     (@ref rte_red.h)

@@ -1,0 +1,12 @@
+EXPERIMENTAL {
+	global:
+
+	rte_aqm_get_memory_size;
+	rte_aqm_init;
+	rte_aqm_destroy;
+	rte_aqm_enqueue;
+	rte_aqm_dequeue;
+	rte_aqm_get_stats;
+
+	local: *;
+};

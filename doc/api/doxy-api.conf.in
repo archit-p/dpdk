@@ -22,6 +22,7 @@ INPUT                   = @TOPDIR@/doc/api/doxy-api-index.md \
                           @TOPDIR@/lib/librte_eal/include \
                           @TOPDIR@/lib/librte_eal/include/generic \
                           @TOPDIR@/lib/librte_acl \
+                          @TOPDIR@/lib/librte_aqm \
                           @TOPDIR@/lib/librte_bbdev \
                           @TOPDIR@/lib/librte_bitratestats \
                           @TOPDIR@/lib/librte_bpf \

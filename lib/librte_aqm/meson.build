@@ -1,0 +1,11 @@
+# SPDX-License-Identifier: BSD-3-Clause
+# Copyright(c) 2020 NITK Surathkal
+
+sources = files('rte_aqm.c',
+		'pkt_desc_ring.c',
+		'aqm_none.c')
+
+headers = files('rte_aqm.h',
+		'rte_aqm_algorithm.h')
+
+deps += ['eal', 'mbuf', 'ring']
