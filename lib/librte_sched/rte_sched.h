@@ -63,7 +63,7 @@ extern "C" {
 
 /** Random Early Detection (RED) */
 #ifdef RTE_SCHED_RED
-#include "rte_red.h"
+#include <rte_red.h>
 #endif
 
 /** Maximum number of queues per pipe.

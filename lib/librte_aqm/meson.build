@@ -6,6 +6,7 @@ sources = files('rte_aqm.c',
 		'aqm_none.c')
 
 headers = files('rte_aqm.h',
-		'rte_aqm_algorithm.h')
+		'rte_aqm_algorithm.h',
+		'rte_red.h')
 
 deps += ['eal', 'mbuf', 'ring']

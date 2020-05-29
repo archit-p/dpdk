@@ -1,3 +1,14 @@
+DPDK_21.0 {
+	global:
+
+	rte_red_config_init;
+	rte_red_log2_1_minus_Wq;
+	rte_red_pow2_frac_inv;
+	rte_red_rand_seed;
+	rte_red_rand_val;
+	rte_red_rt_data_init;
+};
+
 EXPERIMENTAL {
 	global:
 
