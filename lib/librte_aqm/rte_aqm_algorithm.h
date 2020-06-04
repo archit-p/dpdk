@@ -20,7 +20,8 @@ extern "C" {
 #include <stdint.h>
 
 enum rte_aqm_algorithm {
-	RTE_AQM_NONE
+	RTE_AQM_NONE,
+	RTE_AQM_RED
 };
 
 struct rte_aqm_none_params {
@@ -28,6 +29,16 @@ struct rte_aqm_none_params {
 };
 
 struct rte_aqm_none_stats {
+	uint64_t delay;
+	uint32_t length_bytes;
+	uint16_t length_pkts;
+};
+
+struct rte_aqm_red_params {
+	uint16_t limit;
+};
+
+struct rte_aqm_red_stats {
 	uint64_t delay;
 	uint32_t length_bytes;
 	uint16_t length_pkts;

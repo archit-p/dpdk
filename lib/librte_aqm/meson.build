@@ -3,7 +3,8 @@
 
 sources = files('rte_aqm.c',
 		'pkt_desc_ring.c',
-		'aqm_none.c')
+		'aqm_none.c',
+		'aqm_red.c')
 
 headers = files('rte_aqm.h',
 		'rte_aqm_algorithm.h',

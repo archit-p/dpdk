@@ -7,6 +7,7 @@
 #include <rte_mbuf.h>
 
 #include "aqm_none.h"
+#include "aqm_red.h"
 #include "rte_aqm.h"
 #include "rte_aqm_algorithm.h"
 
@@ -23,6 +24,10 @@ size_t rte_aqm_get_memory_size(void *params, enum rte_aqm_algorithm algorithm)
 	switch (algorithm) {
 		case RTE_AQM_NONE:
 			memory_size += aqm_none_get_memory_size(params);
+			break;
+
+		case RTE_AQM_RED:
+			memory_size += aqm_red_get_memory_size(params);
 			break;
 
 		default:
@@ -45,6 +50,10 @@ int rte_aqm_init(struct rte_aqm *aqm, void *params,
 			ret = aqm_none_init((void *)&aqm[1], params);
 			break;
 
+		case RTE_AQM_RED:
+			ret = aqm_red_init((void *)&aqm[1], params);
+			break;
+
 		default:
 			RTE_LOG(ERR, AQM, "%s: unknown algorithm\n", __func__);
 			return -1;
@@ -60,6 +69,10 @@ int rte_aqm_destroy(struct rte_aqm *aqm)
 	switch (aqm->algorithm) {
 		case RTE_AQM_NONE:
 			ret = aqm_none_destroy((void *)&aqm[1]);
+			break;
+
+		case RTE_AQM_RED:
+			ret = aqm_red_destroy((void *)&aqm[1]);
 			break;
 
 		default:
@@ -79,6 +92,10 @@ int rte_aqm_enqueue(struct rte_aqm *aqm, struct rte_mbuf *pkt)
 			ret = aqm_none_enqueue((void *)&aqm[1], pkt);
 			break;
 
+		case RTE_AQM_RED:
+			ret = aqm_red_enqueue((void *)&aqm[1], pkt);
+			break;
+
 		default:
 			RTE_LOG(ERR, AQM, "%s: unknown algorithm\n", __func__);
 			return -1;
@@ -96,6 +113,10 @@ int rte_aqm_dequeue(struct rte_aqm *aqm, struct rte_mbuf **pkt)
 			ret = aqm_none_dequeue((void *)&aqm[1], pkt);
 			break;
 
+		case RTE_AQM_RED:
+			ret = aqm_red_dequeue((void *)&aqm[1], pkt);
+			break;
+
 		default:
 			RTE_LOG(ERR, AQM, "%s: unknown algorithm\n", __func__);
 			return -1;
@@ -111,6 +132,10 @@ int rte_aqm_get_stats(struct rte_aqm *aqm, void *stats)
 	switch (aqm->algorithm) {
 		case RTE_AQM_NONE:
 			ret = aqm_none_get_stats((void *)&aqm[1], stats);
+			break;
+
+		case RTE_AQM_RED:
+			ret = aqm_red_get_stats((void *)&aqm[1], stats);
 			break;
 
 		default:

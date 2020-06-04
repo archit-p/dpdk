@@ -11,8 +11,11 @@
 #include "rte_aqm_algorithm.h"
 
 struct aqm_red {
+<<<<<<< HEAD
 	struct rte_red_config config;
 	struct rte_red rt_data;
+=======
+>>>>>>> fd2beec8e9 (aqm: integrate RED in the library)
 };
 
 size_t aqm_red_get_memory_size(struct rte_aqm_red_params *params)
@@ -21,6 +24,7 @@ size_t aqm_red_get_memory_size(struct rte_aqm_red_params *params)
 
 int aqm_red_init(struct aqm_red *red, struct rte_aqm_red_params *params)
 {
+<<<<<<< HEAD
 	if (rte_red_config_init(&red->config, params->params.wq_log2,
 				params->params.min_th, params->params.max_th,
 				params->params.maxp_inv) != 0) {
@@ -36,6 +40,8 @@ int aqm_red_init(struct aqm_red *red, struct rte_aqm_red_params *params)
 	}
 
 	return 0;
+=======
+>>>>>>> fd2beec8e9 (aqm: integrate RED in the library)
 }
 
 int aqm_red_destroy(struct aqm_red *red)
@@ -44,6 +50,7 @@ int aqm_red_destroy(struct aqm_red *red)
 
 int aqm_red_enqueue(struct aqm_red *red, struct rte_mbuf *pkt)
 {
+<<<<<<< HEAD
 	uint16_t qlen;
 
 	qlen = circular_queue_get_length_pkts(cq);
@@ -56,10 +63,13 @@ int aqm_red_enqueue(struct aqm_red *red, struct rte_mbuf *pkt)
 	}
 
 	return circular_queue_enqueue(cq, pkt);
+=======
+>>>>>>> fd2beec8e9 (aqm: integrate RED in the library)
 }
 
 int aqm_red_dequeue(struct aqm_red *red, struct rte_mbuf **pkt)
 {
+<<<<<<< HEAD
 	int ret;
 
 	ret = circular_queue_dequeue(cq, pkt);
@@ -77,6 +87,8 @@ int aqm_red_dequeue(struct aqm_red *red, struct rte_mbuf **pkt)
 	}
 
 	return 0;
+=======
+>>>>>>> fd2beec8e9 (aqm: integrate RED in the library)
 }
 
 int aqm_red_get_stats(struct aqm_red *red, struct rte_aqm_red_stats *stats)
