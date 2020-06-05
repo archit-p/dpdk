@@ -7,6 +7,7 @@
 #include <rte_mbuf.h>
 
 #include "aqm_none.h"
+#include "aqm_pie.h"
 #include "aqm_red.h"
 #include "aqm_wred.h"
 #include "rte_aqm.h"
@@ -33,6 +34,10 @@ size_t rte_aqm_get_memory_size(void *params, enum rte_aqm_algorithm algorithm)
 
 		case RTE_AQM_WRED:
 			memory_size += aqm_wred_get_memory_size(params);
+			break;
+
+		case RTE_AQM_PIE:
+			memory_size += aqm_pie_get_memory_size(params);
 			break;
 
 		default:
@@ -63,6 +68,10 @@ int rte_aqm_init(struct rte_aqm *aqm, void *params,
 			ret = aqm_wred_init((void *)&aqm[1], params);
 			break;
 
+		case RTE_AQM_PIE:
+			ret = aqm_pie_init((void *)&aqm[1], params);
+			break;
+
 		default:
 			RTE_LOG(ERR, AQM, "%s: unknown algorithm\n", __func__);
 			return -1;
@@ -86,6 +95,10 @@ int rte_aqm_destroy(struct rte_aqm *aqm)
 
 		case RTE_AQM_WRED:
 			ret = aqm_wred_destroy((void *)&aqm[1]);
+			break;
+
+		case RTE_AQM_PIE:
+			ret = aqm_pie_destroy((void *)&aqm[1]);
 			break;
 
 		default:
@@ -113,6 +126,10 @@ int rte_aqm_enqueue(struct rte_aqm *aqm, struct rte_mbuf *pkt)
 			ret = aqm_wred_enqueue((void *)&aqm[1], pkt);
 			break;
 
+		case RTE_AQM_PIE:
+			ret = aqm_pie_enqueue((void *)&aqm[1], pkt);
+			break;
+
 		default:
 			RTE_LOG(ERR, AQM, "%s: unknown algorithm\n", __func__);
 			return -1;
@@ -138,6 +155,10 @@ int rte_aqm_dequeue(struct rte_aqm *aqm, struct rte_mbuf **pkt)
 			ret = aqm_wred_dequeue((void *)&aqm[1], pkt);
 			break;
 
+		case RTE_AQM_PIE:
+			ret = aqm_pie_dequeue((void *)&aqm[1], pkt);
+			break;
+
 		default:
 			RTE_LOG(ERR, AQM, "%s: unknown algorithm\n", __func__);
 			return -1;
@@ -161,6 +182,10 @@ int rte_aqm_get_stats(struct rte_aqm *aqm, void *stats)
 
 		case RTE_AQM_WRED:
 			ret = aqm_wred_get_stats((void *)&aqm[1], stats);
+			break;
+
+		case RTE_AQM_PIE:
+			ret = aqm_pie_get_stats((void *)&aqm[1], stats);
 			break;
 
 		default:
