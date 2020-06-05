@@ -23,7 +23,8 @@ enum rte_aqm_algorithm {
 	RTE_AQM_NONE,
 	RTE_AQM_RED,
 	RTE_AQM_WRED,
-	RTE_AQM_PIE
+	RTE_AQM_PIE,
+	RTE_AQM_CODEL
 };
 
 struct rte_aqm_none_params {
@@ -61,6 +62,16 @@ struct rte_aqm_pie_params {
 };
 
 struct rte_aqm_pie_stats {
+	uint64_t delay;
+	uint32_t length_bytes;
+	uint16_t length_pkts;
+};
+
+struct rte_aqm_codel_params {
+	uint16_t limit;
+};
+
+struct rte_aqm_codel_stats {
 	uint64_t delay;
 	uint32_t length_bytes;
 	uint16_t length_pkts;

@@ -6,7 +6,8 @@ sources = files('rte_aqm.c',
 		'aqm_none.c',
 		'aqm_red.c',
 		'aqm_wred.c',
-		'aqm_pie.c')
+		'aqm_pie.c',
+		'aqm_codel.c')
 
 headers = files('rte_aqm.h',
 		'rte_aqm_algorithm.h',
